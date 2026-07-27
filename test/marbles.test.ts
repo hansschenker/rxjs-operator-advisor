@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getDemo, hasDemo } from "../src/web/marbles.ts";
+import { getDemo, hasDemo, flatteningComparison } from "../src/web/marbles.ts";
 
 /** Compact "frame:value" view of a stream for assertions. */
 function shape(marbles: { frame: number; text: string; kind: string }[]): string[] {
@@ -47,6 +47,31 @@ describe("marble demos (computed via TestScheduler)", () => {
     const out = shape(demo.output.marbles);
     expect(out).toContain("5:fallback");
     expect(out[out.length - 1]).toBe("5:|"); // completes, does not error
+  });
+
+  it("compares the four flattening operators on one shared source", () => {
+    const { comparison, error } = flatteningComparison();
+    expect(error).toBeNull();
+    expect(comparison!.rows.map((r) => r.operator)).toEqual([
+      "mergeMap",
+      "switchMap",
+      "concatMap",
+      "exhaustMap",
+    ]);
+    // Same source + inner, four distinct outputs (policy is the only difference).
+    const outputs = comparison!.rows.map((r) => shape(r.output.marbles).join());
+    expect(new Set(outputs).size).toBe(4);
+    // All rows share one time axis.
+    for (const r of comparison!.rows) {
+      for (const m of r.output.marbles) expect(m.frame).toBeLessThanOrEqual(comparison!.maxFrame);
+    }
+  });
+
+  it("recomputes the comparison for an edited source and rejects bad input", () => {
+    const edited = flatteningComparison("x--y|");
+    expect(edited.comparison).not.toBeNull();
+    expect(edited.comparison!.source.marbleText).toBe("x--y|");
+    expect(flatteningComparison("x*y").error).toMatch(/Use only/);
   });
 
   it("resolves aliases and reports availability", () => {

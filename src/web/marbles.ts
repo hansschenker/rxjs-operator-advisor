@@ -369,3 +369,74 @@ export function recompute(operator: string, marbleStrings: string[]): RecomputeR
     return { demo: null, error: message };
   }
 }
+
+/** The four flattening operators, in the guide's teaching order. */
+export const FLATTENING_OPERATORS = ["mergeMap", "switchMap", "concatMap", "exhaustMap"] as const;
+// `y` arrives one frame after `x` — while x's inner (a-b|) is still active — so
+// the four policies visibly diverge and no two marbles collide on the same frame.
+export const DEFAULT_FLATTENING_SOURCE = "xy------|";
+
+export interface ComparisonRow {
+  operator: string;
+  output: MarbleStream;
+}
+export interface Comparison {
+  source: MarbleStream;
+  rows: ComparisonRow[];
+  maxFrame: number;
+}
+export interface ComparisonResult {
+  comparison: Comparison | null;
+  error: string | null;
+}
+
+/**
+ * Run ONE shared source (and one shared inner Observable) through all four
+ * flattening operators in a single virtual timeline, so their outputs line up
+ * on the same axis. This is the clearest way to see how the concurrency policy —
+ * not the mapping — is what differs between them.
+ */
+export function flatteningComparison(sourceMarbles: string = DEFAULT_FLATTENING_SOURCE): ComparisonResult {
+  if (sourceMarbles.length > MAX_MARBLE_LENGTH) {
+    return { comparison: null, error: `Keep the marble diagram under ${MAX_MARBLE_LENGTH} characters.` };
+  }
+  if (!MARBLE_RE.test(sourceMarbles)) {
+    return { comparison: null, error: "Use only letters, digits, and - | # ( ) — e.g. x-y---|" };
+  }
+
+  try {
+    const scheduler = new TestScheduler(() => {});
+    const source: MarbleStream = { label: "source", marbles: [], marbleText: sourceMarbles };
+    const rows: ComparisonRow[] = FLATTENING_OPERATORS.map((op) => ({
+      operator: op,
+      output: { label: op, marbles: [] },
+    }));
+
+    const record = (stream: MarbleStream) => ({
+      next: (v: unknown) => stream.marbles.push({ frame: scheduler.frame, text: formatValue(v), kind: "next" as const }),
+      error: () => stream.marbles.push({ frame: scheduler.frame, text: "✕", kind: "error" as const }),
+      complete: () => stream.marbles.push({ frame: scheduler.frame, text: "", kind: "complete" as const }),
+    });
+
+    scheduler.run(({ cold }) => {
+      const coldFn = cold as unknown as ColdFn;
+      const src = coldFn(sourceMarbles, deriveValues(sourceMarbles));
+      src.subscribe(record(source));
+      const project = (v: unknown): Observable<unknown> => inner(coldFn, v);
+      const builders: Record<(typeof FLATTENING_OPERATORS)[number], () => Observable<unknown>> = {
+        mergeMap: () => src.pipe(mergeMap(project)),
+        switchMap: () => src.pipe(switchMap(project)),
+        concatMap: () => src.pipe(concatMap(project)),
+        exhaustMap: () => src.pipe(exhaustMap(project)),
+      };
+      FLATTENING_OPERATORS.forEach((op, i) => builders[op]().subscribe(record(rows[i]!.output)));
+    });
+
+    const frames = [...source.marbles, ...rows.flatMap((r) => r.output.marbles)].map((m) => m.frame);
+    const maxFrame = Math.max(1, ...frames);
+    return { comparison: { source, rows, maxFrame }, error: null };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Invalid marble diagram.";
+    return { comparison: null, error: message };
+  }
+}

@@ -494,6 +494,24 @@ a:hover {
   opacity: 1;
 }
 
+/* side-by-side flattening comparison */
+.marble__cmp-lead {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+.m-diagram--cmp .m-label {
+  width: 6.25rem;
+}
+.m-row--cmp .m-label {
+  color: var(--magenta);
+  font-weight: 700;
+}
+.m-cmp-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 0.4rem 0 0.6rem 6.85rem;
+}
+
 .marble__editor {
   margin-top: 1.1rem;
   padding-top: 0.9rem;

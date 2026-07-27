@@ -1,5 +1,5 @@
-import type { MarbleDemo, MarbleStream, Marble } from "./marbles.ts";
-import { recompute } from "./marbles.ts";
+import type { MarbleDemo, MarbleStream, Marble, Comparison } from "./marbles.ts";
+import { recompute, flatteningComparison, DEFAULT_FLATTENING_SOURCE } from "./marbles.ts";
 import { h, clear } from "./render.ts";
 
 /** Total time (seconds) the animation plays out across the whole timeline. */
@@ -121,6 +121,92 @@ export function renderMarbleDemo(operator: string, initial: MarbleDemo): HTMLEle
         { class: "m-edit-legend" },
         "- a tick · letter/digit a value (digits are numbers) · | complete · # error",
       ),
+    ]),
+    error,
+  ]);
+}
+
+function comparisonDiagram(comparison: Comparison, animate: boolean): HTMLElement {
+  return h("div", { class: `m-diagram m-diagram--cmp ${animate ? "" : "m-diagram--static"}`.trim() }, [
+    streamRow(comparison.source, comparison.maxFrame, animate),
+    h("div", { class: "m-cmp-sep" }),
+    ...comparison.rows.map((r) => streamRow(r.output, comparison.maxFrame, animate, "m-row--out m-row--cmp")),
+  ]);
+}
+
+/**
+ * Render an interactive side-by-side comparison of the four flattening
+ * operators on ONE shared, editable source — the clearest way to teach that
+ * they differ only in concurrency policy.
+ */
+export function renderFlatteningComparison(): HTMLElement {
+  const initial = flatteningComparison();
+  let current = initial.comparison!; // default source is always valid
+
+  const host = h("div", { class: "marble__host" });
+  const draw = (animate: boolean): void => {
+    clear(host);
+    host.append(comparisonDiagram(current, animate));
+  };
+
+  const error = h("p", { class: "marble__error", hidden: true, role: "alert" });
+
+  const field = h("input", {
+    class: "m-edit",
+    type: "text",
+    value: current.source.marbleText ?? "",
+    spellcheck: false,
+    autocomplete: "off",
+    autocapitalize: "off",
+    maxlength: 40,
+    "aria-label": "Shared source marble input",
+  });
+  field.addEventListener("input", () => {
+    const result = flatteningComparison(field.value);
+    if (result.comparison) {
+      current = result.comparison;
+      error.setAttribute("hidden", "");
+      error.textContent = "";
+      draw(false);
+    } else {
+      error.textContent = result.error ?? "Invalid marble diagram.";
+      error.removeAttribute("hidden");
+    }
+  });
+
+  const reset = h("button", { class: "m-reset", type: "button" }, "Reset");
+  reset.addEventListener("click", () => {
+    field.value = DEFAULT_FLATTENING_SOURCE;
+    current = flatteningComparison().comparison!;
+    error.setAttribute("hidden", "");
+    error.textContent = "";
+    draw(true);
+  });
+
+  const replay = h("button", { class: "replay", type: "button" }, "▶ Replay");
+  replay.addEventListener("click", () => draw(true));
+
+  draw(true);
+
+  return h("section", { class: "marble marble--cmp" }, [
+    h("div", { class: "marble__head" }, [
+      h("span", { class: "marble__title" }, "Side by side"),
+      h("span", { class: "marble__cmp-lead" }, "one source through all four operators"),
+      replay,
+    ]),
+    h(
+      "p",
+      { class: "marble__caption" },
+      "Each value maps to the same inner Observable (a-b|). Only the concurrency policy differs — watch how the outputs diverge.",
+    ),
+    host,
+    h("div", { class: "marble__editor" }, [
+      h("div", { class: "m-edit-head" }, [
+        h("span", { class: "m-edit-hint" }, "Edit the shared source — all four recompute live:"),
+        reset,
+      ]),
+      h("div", { class: "m-edit-row" }, [h("label", { class: "m-edit-label" }, "source"), field]),
+      h("p", { class: "m-edit-legend" }, "- a tick · letter a value · | complete"),
     ]),
     error,
   ]);

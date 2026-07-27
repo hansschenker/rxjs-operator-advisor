@@ -11,7 +11,7 @@ import { buildCandidates, flatteningOptions } from "../graph.js";
 import { adviseOperators } from "../advisor.js";
 import { h, clear, copyText } from "./render.ts";
 import { getDemo } from "./marbles.ts";
-import { renderMarbleDemo } from "./marble-view.ts";
+import { renderMarbleDemo, renderFlatteningComparison } from "./marble-view.ts";
 
 const graph = graphData as unknown as OntologyGraph;
 
@@ -174,6 +174,7 @@ function renderGuide(): HTMLElement {
         h("tbody", null, rows),
       ]),
     ]),
+    renderFlatteningComparison(),
   ]);
 }
 
