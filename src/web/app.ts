@@ -10,6 +10,8 @@ import type {
 import { buildCandidates, flatteningOptions } from "../graph.js";
 import { adviseOperators } from "../advisor.js";
 import { h, clear, copyText } from "./render.ts";
+import { getDemo } from "./marbles.ts";
+import { renderMarbleDemo } from "./marble-view.ts";
 
 const graph = graphData as unknown as OntologyGraph;
 
@@ -135,6 +137,14 @@ function renderResults(container: HTMLElement, query: string, advice: Advice): v
   );
   advice.results.forEach((ranked, i) => {
     container.append(rankedCard(ranked, i, advice.confident));
+    if (i === 0) {
+      const demo = getDemo(ranked.candidate.operator);
+      container.append(
+        demo
+          ? renderMarbleDemo(demo)
+          : h("p", { class: "marble-note" }, `No marble demo for ${ranked.candidate.operator} yet.`),
+      );
+    }
   });
 }
 
