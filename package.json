@@ -1,22 +1,28 @@
 {
   "name": "rxjs-operator-advisor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Describe the behavior you want, get the right RxJS higher-order operator. A standalone advisor that reuses the RxJS ontology (property-graph JSON) as its knowledge source.",
+  "description": "Describe the behavior you want, get the right RxJS operator. A standalone advisor (CLI + web UI) that reuses the RxJS ontology (property-graph JSON) as its knowledge source.",
   "license": "MIT",
   "bin": {
     "rxjs-advise": "src/cli.ts"
   },
   "scripts": {
-    "build": "tsc --noEmit",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
     "advise": "tsx src/cli.ts",
     "test": "vitest run"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.2"
   }
 }

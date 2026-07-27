@@ -54,3 +54,58 @@ export interface Recommendation {
   /** True when there is a clear single winner. */
   confident: boolean;
 }
+
+/**
+ * Advisor-owned task taxonomy. The ontology only distinguishes pipeable vs.
+ * higher-order operators, so grouping operators by what a user is trying to *do*
+ * is knowledge the advisor adds on top (see `OPERATOR_INTENTS` in intents.ts).
+ */
+export type OperatorCategory =
+  | "flattening"
+  | "transformation"
+  | "filtering"
+  | "combination"
+  | "rate-limiting"
+  | "error-handling"
+  | "multicasting"
+  | "utility"
+  | "creation";
+
+/**
+ * One operator the general advisor can recommend, assembled from the ontology
+ * (name, description, export sites, flattening policy / bare variant) plus the
+ * advisor's own task category. Operators with no curated intent still appear as
+ * candidates so they stay reachable via description matching.
+ */
+export interface OperatorCandidate {
+  /** e.g. "debounceTime" */
+  operator: string;
+  operatorDescription: string;
+  category: OperatorCategory;
+  exportSites: string[];
+  /** teaching-vocabulary flattening policy, when the operator has one */
+  policy?: string;
+  /** bare higher-order form, e.g. "switchAll" (via higherOrderVariantOf) */
+  bareVariant?: string;
+  /** true for creation functions (import differs conceptually from pipeables) */
+  isCreation?: boolean;
+  /** advisor-owned behavior phrases matched against a query (empty if un-curated) */
+  signals: string[];
+}
+
+export interface RankedOperator {
+  candidate: OperatorCandidate;
+  score: number;
+  /** Signal phrases / description keywords from the behavior text that matched. */
+  matched: string[];
+}
+
+export interface Advice {
+  behavior: string;
+  /** Best match, or null when nothing scored. */
+  best: RankedOperator | null;
+  /** Top ranked operators (including `best`), each with score > 0. */
+  results: RankedOperator[];
+  /** True when there is a clear single winner. */
+  confident: boolean;
+}

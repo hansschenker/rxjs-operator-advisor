@@ -1,4 +1,10 @@
-import type { FlatteningOption, RankedOption, Recommendation } from "./types.js";
+import type {
+  FlatteningOption,
+  RankedOption,
+  Recommendation,
+  Advice,
+  RankedOperator,
+} from "./types.js";
 
 function optionLine(o: FlatteningOption): string {
   const variant = o.bareVariant ? ` (bare form: ${o.bareVariant})` : "";
@@ -47,6 +53,48 @@ export function formatRecommendation(
   if (!rec.confident && others.length > 0) {
     lines.push("");
     lines.push(`Also consider: ${others.map(altSummary).join(", ")}.`);
+  }
+  return lines.join("\n");
+}
+
+function importLine(r: RankedOperator): string {
+  const site = r.candidate.exportSites[0] ?? "rxjs";
+  return `import { ${r.candidate.operator} } from '${site}';`;
+}
+
+/** Render a general operator recommendation (across all categories) for the CLI. */
+export function formatAdvice(advice: Advice): string {
+  if (!advice.best) {
+    return [
+      `No operator matched: "${advice.behavior}"`,
+      "Try describing what you want the stream to do — e.g. \"wait until the user stops typing\",",
+      "\"retry the request on failure\", or \"combine the latest value of each stream\".",
+    ].join("\n");
+  }
+
+  const lines: string[] = [];
+  const header = advice.confident
+    ? "Recommended operator"
+    : "Best guess (low confidence)";
+  const { candidate, matched } = advice.best;
+  lines.push(`${header}: ${candidate.operator}  [${candidate.category}]`);
+  lines.push("");
+  lines.push(candidate.operatorDescription);
+  if (candidate.bareVariant) {
+    lines.push(`Bare (non-mapping) form: ${candidate.bareVariant}.`);
+  }
+  lines.push(importLine(advice.best));
+  if (matched.length > 0) {
+    lines.push(`Matched on: ${matched.join(", ")}.`);
+  }
+
+  const others = advice.results.filter((r) => r !== advice.best);
+  if (others.length > 0) {
+    lines.push("");
+    lines.push("Also consider:");
+    for (const r of others) {
+      lines.push(`  • ${r.candidate.operator} (${r.candidate.category})`);
+    }
   }
   return lines.join("\n");
 }

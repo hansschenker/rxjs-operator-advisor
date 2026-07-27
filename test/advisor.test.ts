@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { loadOntology, flatteningOptions } from "../src/ontology.js";
+import { loadOntology } from "../src/ontology.js";
+import { flatteningOptions } from "../src/graph.js";
 import { advise } from "../src/advisor.js";
 
 const graph = loadOntology();
