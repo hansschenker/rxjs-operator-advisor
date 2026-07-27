@@ -160,6 +160,7 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "sampleTime",
     signals: [
+      "sample the latest",
       "sample",
       "poll the latest",
       "read the latest value every",
@@ -177,6 +178,8 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "filter",
     signals: [
+      "only keep",
+      "keep the values",
       "only values that",
       "only emit when",
       "keep values where",
@@ -192,6 +195,10 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "distinctUntilChanged",
     signals: [
+      "value changes",
+      "when the value changes",
+      "emit when it changes",
+      "when it changes",
       "only when it changes",
       "only when the value changes",
       "skip consecutive duplicates",
@@ -292,6 +299,8 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "reduce",
     signals: [
+      "reduce",
+      "single total",
       "final total",
       "aggregate at the end",
       "reduce to a single",
@@ -305,15 +314,15 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "bufferTime",
-    signals: ["batch over time", "collect for a period", "buffer for", "group values every", "batch every"],
+    signals: ["batch values", "batch over time", "collect for a period", "buffer for", "group values every", "batch every"],
   },
   {
     operator: "bufferCount",
-    signals: ["batch of", "group into arrays of", "collect n values", "chunks of", "every n values as an array"],
+    signals: ["into arrays of", "arrays of", "batch of", "group into arrays of", "collect n values", "chunks of", "every n values as an array"],
   },
   {
     operator: "toArray",
-    signals: ["collect all into an array", "all values as an array", "gather into a list", "array when complete"],
+    signals: ["into an array", "collect all", "collect all into an array", "all values as an array", "gather into a list", "array when complete"],
   },
   {
     operator: "groupBy",
@@ -348,15 +357,15 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "concatWith",
-    signals: ["one after another", "append another stream", "then the next stream", "after the first completes"],
+    signals: ["append", "one stream after", "one after another", "append another stream", "then the next stream", "after the first completes"],
   },
   {
     operator: "mergeWith",
-    signals: ["merge streams", "interleave streams", "combine emissions from", "merge into one"],
+    signals: ["merge", "merge two", "merge streams", "interleave streams", "combine emissions from", "merge into one"],
   },
   {
     operator: "raceWith",
-    signals: ["first to emit wins", "whichever emits first", "race", "fastest source"],
+    signals: ["whichever", "emits first", "first to emit wins", "whichever emits first", "race", "fastest source"],
   },
   {
     operator: "startWith",
@@ -389,6 +398,8 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "catchError",
     signals: [
+      "recover",
+      "fallback",
       "handle the error",
       "on error",
       "fallback value",
@@ -416,7 +427,7 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "throwIfEmpty",
-    signals: ["error if empty", "fail if nothing", "throw when no values", "require at least one"],
+    signals: ["is empty", "error if", "error if empty", "fail if nothing", "throw when no values", "require at least one"],
   },
 
   // ── multicasting ──
@@ -434,6 +445,8 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   {
     operator: "shareReplay",
     signals: [
+      "late subscribers",
+      "cache the last value",
       "cache the last",
       "replay to late subscribers",
       "share and cache",

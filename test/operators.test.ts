@@ -61,6 +61,20 @@ describe("adviseOperators() across categories", () => {
     ["cancel the previous request on each keystroke", "switchMap"],
     ["queue the tasks and run them one at a time in order", "concatMap"],
     ["wait for all requests to complete then combine", "forkJoin"],
+    // reachability: natural phrasings that previously missed their operator
+    ["only keep even numbers", "filter"],
+    ["only emit when the value changes", "distinctUntilChanged"],
+    ["sample the latest value every second", "sampleTime"],
+    ["group values into arrays of three", "bufferCount"],
+    ["batch values over time", "bufferTime"],
+    ["collect all values into an array", "toArray"],
+    ["reduce everything to a single total", "reduce"],
+    ["append one stream after another completes", "concatWith"],
+    ["merge two streams into one", "mergeWith"],
+    ["whichever stream emits first wins", "raceWith"],
+    ["recover from an error with a fallback", "catchError"],
+    ["error if the stream is empty", "throwIfEmpty"],
+    ["cache the last value for late subscribers", "shareReplay"],
   ];
 
   for (const [behavior, expected] of cases) {
