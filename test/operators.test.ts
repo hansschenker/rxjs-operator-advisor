@@ -45,6 +45,7 @@ describe("adviseOperators() across categories", () => {
     ["share the subscription so the request only fires once", "share"],
     ["cancel the previous request on each keystroke", "switchMap"],
     ["queue the tasks and run them one at a time in order", "concatMap"],
+    ["wait for all requests to complete then combine", "forkJoin"],
   ];
 
   for (const [behavior, expected] of cases) {
