@@ -74,6 +74,21 @@ describe("marble demos (computed via TestScheduler)", () => {
     expect(flatteningComparison("x*y").error).toMatch(/Use only/);
   });
 
+  it("covers the newly added operators with sensible output", () => {
+    expect(shape(getDemo("last")!.output.marbles)).toEqual(["7:c", "7:|"]);
+    expect(shape(getDemo("reduce")!.output.marbles)).toEqual(["7:6", "7:|"]);
+    expect(shape(getDemo("toArray")!.output.marbles)).toEqual(["7:[a,b,c]", "7:|"]);
+    expect(shape(getDemo("ignoreElements")!.output.marbles)).toEqual(["7:|"]); // only complete
+    expect(shape(getDemo("takeUntil")!.output.marbles)).toEqual(["0:a", "2:b", "4:c", "5:|"]);
+    expect(shape(getDemo("forkJoin")!.output.marbles)).toEqual(["5:[c,2]", "5:|"]);
+    // timeout and throwIfEmpty end in an error notification
+    const timeoutOut = shape(getDemo("timeout")!.output.marbles);
+    expect(timeoutOut[timeoutOut.length - 1]).toBe("5:#");
+    expect(shape(getDemo("throwIfEmpty")!.output.marbles)).toEqual(["4:#"]);
+    // bufferTime batches without a trailing empty buffer
+    expect(shape(getDemo("bufferTime")!.output.marbles)).toEqual(["4:[a,b]", "7:[c,d]", "7:|"]);
+  });
+
   it("resolves aliases and reports availability", () => {
     expect(hasDemo("switchMap")).toBe(true);
     expect(hasDemo("flatMap")).toBe(true); // alias → mergeMap

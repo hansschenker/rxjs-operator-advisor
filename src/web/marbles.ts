@@ -1,21 +1,33 @@
-import { of, type Observable, type SchedulerLike } from "rxjs";
+import { of, forkJoin, type Observable, type SchedulerLike } from "rxjs";
 import {
   map,
   filter,
   scan,
+  reduce,
   take,
+  takeWhile,
+  takeUntil,
   skip,
   first,
+  last,
+  elementAt,
+  ignoreElements,
   distinctUntilChanged,
   distinct,
   pairwise,
   startWith,
   tap,
+  finalize,
+  toArray,
+  bufferCount,
+  bufferTime,
   debounceTime,
   throttleTime,
   delay,
   auditTime,
   sampleTime,
+  timeout,
+  throwIfEmpty,
   mergeMap,
   switchMap,
   concatMap,
@@ -25,6 +37,7 @@ import {
   zipWith,
   mergeWith,
   concatWith,
+  raceWith,
   catchError,
   retry,
 } from "rxjs";
@@ -274,6 +287,109 @@ const DEMOS: Record<string, DemoSpec> = {
     caption: "Re-subscribes to the source on error.",
     inputs: [{ marbles: "-a-b-#" }],
     build: (s) => s[0]!.pipe(retry(1)),
+  },
+
+  // ── more filtering ──
+  last: {
+    code: "source.pipe(last())",
+    caption: "Emits only the last value, on complete.",
+    inputs: [{ marbles: "-a-b-c-|" }],
+    build: (s) => s[0]!.pipe(last()),
+  },
+  takeWhile: {
+    code: "source.pipe(takeWhile(x => x < 3))",
+    caption: "Emits while the predicate holds, then completes.",
+    inputs: [{ marbles: "-1-2-3-4-|" }],
+    build: (s) => s[0]!.pipe(takeWhile((x) => (x as number) < 3)),
+  },
+  takeUntil: {
+    code: "source.pipe(takeUntil(stop$))",
+    caption: "Emits until a notifier fires, then completes.",
+    inputs: [
+      { marbles: "a-b-c-d-e|", label: "source" },
+      { marbles: "-----x|", label: "stop$" },
+    ],
+    build: (s) => s[0]!.pipe(takeUntil(s[1]!)),
+  },
+  ignoreElements: {
+    code: "source.pipe(ignoreElements())",
+    caption: "Discards every value; passes only complete or error.",
+    inputs: [{ marbles: "-a-b-c-|" }],
+    build: (s) => s[0]!.pipe(ignoreElements()),
+  },
+  elementAt: {
+    code: "source.pipe(elementAt(2))",
+    caption: "Emits the value at the given index, then completes.",
+    inputs: [{ marbles: "-a-b-c-d-|" }],
+    build: (s) => s[0]!.pipe(elementAt(2)),
+  },
+
+  // ── more transformation ──
+  reduce: {
+    code: "source.pipe(reduce((acc, x) => acc + x, 0))",
+    caption: "Emits a single accumulated value on complete.",
+    inputs: [{ marbles: "-1-2-3-|" }],
+    build: (s) => s[0]!.pipe(reduce((acc: number, x) => acc + (x as number), 0)),
+  },
+  toArray: {
+    code: "source.pipe(toArray())",
+    caption: "Collects all values into one array on complete.",
+    inputs: [{ marbles: "-a-b-c-|" }],
+    build: (s) => s[0]!.pipe(toArray()),
+  },
+  bufferCount: {
+    code: "source.pipe(bufferCount(2))",
+    caption: "Groups values into arrays of N.",
+    inputs: [{ marbles: "-a-b-c-d-e|" }],
+    build: (s) => s[0]!.pipe(bufferCount(2)),
+  },
+  bufferTime: {
+    code: "source.pipe(bufferTime(4))",
+    caption: "Batches values emitted within each time window.",
+    inputs: [{ marbles: "a-b-c-d|" }],
+    build: (s, _cold, sch) => s[0]!.pipe(bufferTime(4, sch)),
+  },
+
+  // ── more combination ──
+  raceWith: {
+    code: "a$.pipe(raceWith(b$))",
+    caption: "Mirrors whichever source emits first; ignores the rest.",
+    inputs: [
+      { marbles: "---a-b-c|", label: "a$" },
+      { marbles: "-1-2-3|", label: "b$" },
+    ],
+    build: (s) => s[0]!.pipe(raceWith(s[1]!)),
+  },
+  forkJoin: {
+    code: "forkJoin([a$, b$])",
+    caption: "Waits for all to complete, then emits their last values.",
+    inputs: [
+      { marbles: "a-b-c|", label: "a$" },
+      { marbles: "1-2|", label: "b$" },
+    ],
+    build: (s) => forkJoin([s[0]!, s[1]!]),
+  },
+
+  // ── more error handling ──
+  timeout: {
+    code: "source.pipe(timeout(3))",
+    caption: "Errors if no value arrives within the window.",
+    inputs: [{ marbles: "a-b-----c|" }],
+    build: (s, _cold, sch) => s[0]!.pipe(timeout({ each: 3, scheduler: sch })),
+  },
+  throwIfEmpty: {
+    code: "source.pipe(throwIfEmpty())",
+    caption: "Errors if the source completes without emitting.",
+    inputs: [{ marbles: "----|" }],
+    build: (s) => s[0]!.pipe(throwIfEmpty()),
+  },
+
+  // ── more utility ──
+  finalize: {
+    code: "source.pipe(finalize(() => cleanup()))",
+    caption: "Runs teardown when the source completes or errors; values pass through.",
+    inputs: [{ marbles: "-a-b-c-|" }],
+    build: (s) => s[0]!.pipe(finalize(() => {})),
   },
 };
 
