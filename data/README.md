@@ -159,8 +159,10 @@ group from their `flatteningPolicy` edge instead (so browse shows Flattening (4)
 and Transformation (23)). Each tag also has a matching `cat:*-operator` Category
 node + `hasCategory` edge for graph consistency.
 
-These tags are applied by **`scripts/categorize-ontology.mjs`** (idempotent) — re-run
-it after re-vendoring the ontology to reapply the categorisation.
+These tags are produced **upstream by the `rxjs-ontology` generator**
+(`src/curate/functionalCategories.ts`), so a re-vendored `graph.json` already carries
+them. **`scripts/categorize-ontology.mjs`** remains as an idempotent fallback for
+applying them to an older, pre-categorised release.
 
 ## What the advisor actually reads
 
