@@ -141,7 +141,7 @@ function renderResults(container: HTMLElement, query: string, advice: Advice): v
       const demo = getDemo(ranked.candidate.operator);
       container.append(
         demo
-          ? renderMarbleDemo(demo)
+          ? renderMarbleDemo(ranked.candidate.operator, demo)
           : h("p", { class: "marble-note" }, `No marble demo for ${ranked.candidate.operator} yet.`),
       );
     }

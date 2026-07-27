@@ -48,6 +48,8 @@ export interface Marble {
 export interface MarbleStream {
   label: string;
   marbles: Marble[];
+  /** The marble-diagram string that produced this stream (inputs only). */
+  marbleText?: string;
 }
 
 export interface MarbleDemo {
@@ -60,7 +62,7 @@ export interface MarbleDemo {
 }
 
 type ColdFn = (marbles: string, values?: Record<string, unknown>) => Observable<unknown>;
-type InputSpec = { marbles: string; values?: Record<string, unknown>; label?: string };
+type InputSpec = { marbles: string; label?: string };
 
 interface DemoSpec {
   code: string;
@@ -74,30 +76,44 @@ function formatValue(v: unknown): string {
   return String(v);
 }
 
+/**
+ * Derive a values map from a marble string so it is self-describing: a digit
+ * marble becomes its number (so `map(x => x * 10)` works when a learner types
+ * "1-2-3"), any other character stays a string. Keeps editing intuitive with no
+ * hidden values map to fall out of sync.
+ */
+function deriveValues(marbles: string): Record<string, unknown> {
+  const values: Record<string, unknown> = {};
+  for (const ch of marbles) {
+    if (/[a-z0-9]/i.test(ch) && !(ch in values)) {
+      values[ch] = /[0-9]/.test(ch) ? Number(ch) : ch;
+    }
+  }
+  return values;
+}
+
 /** A small inner Observable factory for higher-order operator demos. */
 function inner(cold: ColdFn, v: unknown): Observable<unknown> {
   return cold("a-b|", { a: `${v}1`, b: `${v}2` });
 }
 
-const num = { a: 1, b: 2, c: 3, d: 4, e: 5 } as const;
-
 const DEMOS: Record<string, DemoSpec> = {
   map: {
     code: "source.pipe(map(x => x * 10))",
     caption: "Transforms each value.",
-    inputs: [{ marbles: "-a-b-c-|", values: num }],
+    inputs: [{ marbles: "-1-2-3-|" }],
     build: (s) => s[0]!.pipe(map((x) => (x as number) * 10)),
   },
   filter: {
     code: "source.pipe(filter(x => x % 2 === 0))",
     caption: "Keeps only values that pass the predicate.",
-    inputs: [{ marbles: "-a-b-c-d-|", values: num }],
+    inputs: [{ marbles: "-1-2-3-4-|" }],
     build: (s) => s[0]!.pipe(filter((x) => (x as number) % 2 === 0)),
   },
   scan: {
     code: "source.pipe(scan((acc, x) => acc + x, 0))",
     caption: "Emits the running accumulation on every value.",
-    inputs: [{ marbles: "-a-b-c-|", values: num }],
+    inputs: [{ marbles: "-1-2-3-|" }],
     build: (s) => s[0]!.pipe(scan((acc: number, x) => acc + (x as number), 0)),
   },
   take: {
@@ -267,8 +283,12 @@ const ALIASES: Record<string, string> = {
   mapTo: "map",
 };
 
-/** Run a demo spec in virtual time and capture input + output marbles. */
-function runDemo(operator: string, spec: DemoSpec): MarbleDemo {
+/**
+ * Run a demo spec in virtual time and capture input + output marbles. When
+ * `overrides` is given, each input's marble string is replaced (so learners can
+ * tweak the source); missing entries fall back to the spec default.
+ */
+function runSpec(operator: string, spec: DemoSpec, overrides?: string[]): MarbleDemo {
   const scheduler = new TestScheduler(() => {});
   const inputs: MarbleStream[] = [];
   const output: MarbleStream = { label: "output", marbles: [] };
@@ -282,10 +302,12 @@ function runDemo(operator: string, spec: DemoSpec): MarbleDemo {
   scheduler.run(({ cold }) => {
     const coldFn = cold as unknown as ColdFn;
     const sources = spec.inputs.map((inp, i) => {
-      const src = coldFn(inp.marbles, inp.values);
+      const marbleText = overrides?.[i] ?? inp.marbles;
+      const src = coldFn(marbleText, deriveValues(marbleText));
       const stream: MarbleStream = {
         label: inp.label ?? (spec.inputs.length > 1 ? `input ${i + 1}` : "source"),
         marbles: [],
+        marbleText,
       };
       inputs.push(stream);
       src.subscribe(record(stream));
@@ -309,5 +331,41 @@ export function getDemo(operator: string): MarbleDemo | null {
   const canonical = ALIASES[operator] ?? operator;
   const spec = DEMOS[canonical];
   if (!spec) return null;
-  return runDemo(operator, spec);
+  return runSpec(operator, spec);
+}
+
+/** Characters a marble string may contain. */
+const MARBLE_RE = /^[a-z0-9()#|\- ]*$/i;
+const MAX_MARBLE_LENGTH = 40;
+
+export interface RecomputeResult {
+  demo: MarbleDemo | null;
+  error: string | null;
+}
+
+/**
+ * Re-run an operator's demo with learner-edited input marble strings. Validates
+ * the syntax and guards against runaway lengths; returns a friendly error
+ * (leaving the previous diagram in place) instead of throwing.
+ */
+export function recompute(operator: string, marbleStrings: string[]): RecomputeResult {
+  const canonical = ALIASES[operator] ?? operator;
+  const spec = DEMOS[canonical];
+  if (!spec) return { demo: null, error: "No demo for this operator." };
+
+  for (const marbles of marbleStrings) {
+    if (marbles.length > MAX_MARBLE_LENGTH) {
+      return { demo: null, error: `Keep each marble diagram under ${MAX_MARBLE_LENGTH} characters.` };
+    }
+    if (!MARBLE_RE.test(marbles)) {
+      return { demo: null, error: "Use only letters, digits, and - | # ( ) — e.g. -a-b-c|" };
+    }
+  }
+
+  try {
+    return { demo: runSpec(operator, spec, marbleStrings), error: null };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Invalid marble diagram.";
+    return { demo: null, error: message };
+  }
 }
