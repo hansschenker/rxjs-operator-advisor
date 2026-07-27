@@ -16,8 +16,8 @@ descriptions, export sites, and structural relationships between RxJS symbols.
 ```jsonc
 {
   "meta":  { "name", "source", "nodeCount", "edgeCount", "generator" },
-  "nodes": [ /* 277 nodes  */ ],
-  "edges": [ /* 770 edges  */ ]
+  "nodes": [ /* 287 nodes  */ ],
+  "edges": [ /* 910 edges  */ ]
 }
 ```
 
@@ -58,14 +58,14 @@ Example (an operator node):
 }
 ```
 
-### Node types (277 total)
+### Node types (287 total)
 
 | type | count | id prefix |
 |---|---:|---|
 | `Operator` | 107 | `op:` |
 | `CreationFunction` | 33 | `create:` |
 | `TypeAlias` | 32 | `type:` |
-| `Category` | 15 | `cat:` |
+| `Category` | 25 | `cat:` |
 | `ConfigType` | 14 | `cfg:` |
 | `SchedulerType` | 14 | `sched:` |
 | `ProtocolTerm` | 10 | `proto:` |
@@ -106,12 +106,12 @@ Directed relationships between nodes. Every edge has:
 }
 ```
 
-### Edge types (770 total)
+### Edge types (910 total)
 
 | type | count | meaning |
 |---|---:|---|
 | `exportedFrom` | 364 | symbol → export site |
-| `hasCategory` | 309 | node → category |
+| `hasCategory` | 449 | node → category |
 | `usesProtocolTerm` | 18 | uses an Observable-protocol term (next/error/complete…) |
 | `subClassOf` | 16 | type hierarchy |
 | `throwsError` | 14 | operator/type → error it can throw |
@@ -131,6 +131,37 @@ Directed relationships between nodes. Every edge has:
 
 Edge ids follow `edge:<source-name>--<type>--<target-name>`.
 
+## Functional operator categories (rxjs.dev)
+
+Every `Operator` / `CreationFunction` node also carries **one rxjs.dev functional
+category** in its `categories` array (added alongside the structural
+`pipeable-operator` / `observable-creation` tags). These come from the RxJS docs
+["Categories of operators"](https://rxjs.dev/guide/operators). The advisor reads
+this tag to group operators in the browse-by-task section (`categoryOf` in
+`src/graph.ts`).
+
+| ontology tag | advisor category | count |
+|---|---|---:|
+| `transformation-operator` | `transformation` | 27 |
+| `filtering-operator` | `filtering` | 25 |
+| `creation-operator` | `creation` | 24 |
+| `join-operator` | `join` | 16 |
+| `utility-operator` | `utility` | 15 |
+| `multicasting-operator` | `multicasting` | 10 |
+| `join-creation-operator` | `join-creation` | 7 |
+| `conditional-boolean-operator` | `conditional-boolean` | 7 |
+| `error-handling-operator` | `error-handling` | 5 |
+| `mathematical-aggregate-operator` | `mathematical-aggregate` | 4 |
+
+rxjs.dev has no "flattening" category — the four flattening operators are tagged
+`transformation-operator`, and the advisor derives a dedicated **`flattening`**
+group from their `flatteningPolicy` edge instead (so browse shows Flattening (4)
+and Transformation (23)). Each tag also has a matching `cat:*-operator` Category
+node + `hasCategory` edge for graph consistency.
+
+These tags are applied by **`scripts/categorize-ontology.mjs`** (idempotent) — re-run
+it after re-vendoring the ontology to reapply the categorisation.
+
 ## What the advisor actually reads
 
 The app consumes only a **subset** of the fields, so only these have any effect on
@@ -142,7 +173,7 @@ behaviour (see `src/graph.ts`, `src/advisor.ts`):
 | `node.name` | UI + CLI | operator name and the `import { … }` line |
 | `node.description` | cards **and** `adviseOperators` fallback | shown text + low-weight keyword matching for un-curated operators |
 | `node.exportSites` | UI + CLI | the import path |
-| `node.categories` (`higher-order-operator`) | `buildCandidates` → `deriveCategory` | browse-by-task grouping |
+| `node.categories` (the `*-operator` functional tag) | `buildCandidates` → `categoryOf` | browse-by-task grouping |
 | edges `flatteningPolicy`, `higherOrderVariantOf` | `flatteningOptions` | policy + bare form in the guide and side-by-side comparison |
 
 Everything else (`roles`, `aliases`, `sourceRef`, `properties`, `weight`,
@@ -167,12 +198,13 @@ sentence improves both the card text and the fallback matcher:
 
 **B. Add a missing operator** — append a node (copy an existing same-`type` node as
 a template). Minimum the advisor needs: `id`, `name`, `type`, `categories`,
-`exportSites`, `description`.
+`exportSites`, `description`. Add its functional tag to `scripts/categorize-ontology.mjs`
+and re-run it to get the category + `hasCategory` edge for free.
 
 ```json
 {
   "id": "op:audit", "name": "audit", "type": "Operator",
-  "categories": ["pipeable-operator"], "exportSites": ["rxjs", "rxjs/operators"],
+  "categories": ["pipeable-operator", "filtering-operator"], "exportSites": ["rxjs", "rxjs/operators"],
   "roles": [], "aliases": [],
   "description": "audit ignores values for a duration decided by another Observable, then emits the most recent one.",
   "sourceRef": { "section": "manual", "line": 0 },

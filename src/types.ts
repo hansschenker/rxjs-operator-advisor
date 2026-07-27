@@ -56,20 +56,23 @@ export interface Recommendation {
 }
 
 /**
- * Advisor-owned task taxonomy. The ontology only distinguishes pipeable vs.
- * higher-order operators, so grouping operators by what a user is trying to *do*
- * is knowledge the advisor adds on top (see `OPERATOR_INTENTS` in intents.ts).
+ * Task taxonomy from rxjs.dev's "Categories of operators", read from each node's
+ * `*-operator` category tag in the ontology. `flattening` is the one addition:
+ * the four flattening operators are Transformation on rxjs.dev, but the advisor
+ * derives a dedicated group from their `flatteningPolicy` edges (see graph.ts).
  */
 export type OperatorCategory =
   | "flattening"
+  | "creation"
+  | "join-creation"
   | "transformation"
   | "filtering"
-  | "combination"
-  | "rate-limiting"
-  | "error-handling"
+  | "join"
   | "multicasting"
+  | "error-handling"
   | "utility"
-  | "creation";
+  | "conditional-boolean"
+  | "mathematical-aggregate";
 
 /**
  * One operator the general advisor can recommend, assembled from the ontology

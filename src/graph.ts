@@ -75,18 +75,36 @@ export function flatteningOptions(graph: OntologyGraph): FlatteningOption[] {
 }
 
 /** Best-effort category for an operator the advisor hasn't curated an intent for. */
-function deriveCategory(node: OntologyNode): OperatorCategory {
-  if (node.type === "CreationFunction") return "creation";
-  if (node.categories.includes("higher-order-operator")) return "flattening";
+/** rxjs.dev category tag (on a node's `categories`) → advisor `OperatorCategory`. */
+const CATEGORY_BY_TAG: Record<string, OperatorCategory> = {
+  "creation-operator": "creation",
+  "join-creation-operator": "join-creation",
+  "transformation-operator": "transformation",
+  "filtering-operator": "filtering",
+  "join-operator": "join",
+  "multicasting-operator": "multicasting",
+  "error-handling-operator": "error-handling",
+  "utility-operator": "utility",
+  "conditional-boolean-operator": "conditional-boolean",
+  "mathematical-aggregate-operator": "mathematical-aggregate",
+};
+
+/** Read an operator's rxjs.dev category from its ontology tags (defaults to utility). */
+function categoryOf(node: OntologyNode): OperatorCategory {
+  for (const tag of node.categories) {
+    const category = CATEGORY_BY_TAG[tag];
+    if (category) return category;
+  }
   return "utility";
 }
 
 /**
  * Build the full candidate set the general advisor ranks over: every operator and
- * creation-function node in the ontology, enriched with the advisor's curated
- * category + signal phrases (from `OPERATOR_INTENTS`) where available, plus policy
- * and bare-variant facts from the graph. Curated operators come first (stable,
- * meaningful order); the un-curated long tail follows with empty `signals`, so it
+ * creation-function node in the ontology. Category comes from the ontology's
+ * rxjs.dev tags, except the four flattening operators (identified by their
+ * `flatteningPolicy` edge) which get the advisor's dedicated `flattening` group.
+ * Signal phrases come from `OPERATOR_INTENTS` where available; curated operators
+ * come first (stable order), the un-curated tail follows with empty `signals` and
  * stays reachable through description-keyword matching.
  */
 export function buildCandidates(graph: OntologyGraph): OperatorCandidate[] {
@@ -101,7 +119,7 @@ export function buildCandidates(graph: OntologyGraph): OperatorCandidate[] {
     return {
       operator: node.name,
       operatorDescription: node.description,
-      category: intent ? intent.category : deriveCategory(node),
+      category: policies.has(node.id) ? "flattening" : categoryOf(node),
       exportSites: node.exportSites,
       policy: policies.get(node.id),
       bareVariant: variants.get(node.id),

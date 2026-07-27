@@ -30,6 +30,21 @@ describe("buildCandidates (reuse of the ontology)", () => {
     expect(mapTo).toBeDefined();
     expect(mapTo!.signals).toHaveLength(0);
   });
+
+  it("reads the rxjs.dev category from the ontology, keeping flattening separate", () => {
+    const cat = (name: string) => byName.get(name)!.category;
+    expect(cat("switchMap")).toBe("flattening"); // via flatteningPolicy edge, not the tag
+    expect(cat("map")).toBe("transformation");
+    expect(cat("filter")).toBe("filtering");
+    expect(cat("reduce")).toBe("mathematical-aggregate");
+    expect(cat("every")).toBe("conditional-boolean");
+    expect(cat("of")).toBe("creation");
+    expect(cat("forkJoin")).toBe("join-creation");
+    expect(cat("withLatestFrom")).toBe("join");
+    expect(cat("share")).toBe("multicasting");
+    expect(cat("catchError")).toBe("error-handling");
+    expect(cat("tap")).toBe("utility");
+  });
 });
 
 describe("adviseOperators() across categories", () => {

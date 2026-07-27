@@ -2,8 +2,8 @@
   "meta": {
     "name": "RxJS Ontology",
     "source": "rxjs-official-name-extractions.md",
-    "nodeCount": 277,
-    "edgeCount": 770,
+    "nodeCount": 287,
+    "edgeCount": 910,
     "generator": "rxjs-ontology buildGraph"
   },
   "nodes": [
@@ -574,7 +574,8 @@
       "name": "EMPTY",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -595,7 +596,8 @@
       "name": "NEVER",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -617,7 +619,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "ajax-fetch-websocket"
+        "ajax-fetch-websocket",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs/ajax"
@@ -638,7 +641,8 @@
       "name": "animationFrames",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -659,7 +663,8 @@
       "name": "bindCallback",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -680,7 +685,8 @@
       "name": "bindNodeCallback",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -702,7 +708,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -728,7 +735,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -753,7 +761,8 @@
       "name": "connectable",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -774,7 +783,8 @@
       "name": "defer",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -795,7 +805,8 @@
       "name": "empty",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -816,7 +827,8 @@
       "name": "forkJoin",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -837,7 +849,8 @@
       "name": "from",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -858,7 +871,8 @@
       "name": "fromEvent",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -879,7 +893,8 @@
       "name": "fromEventPattern",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -901,7 +916,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "ajax-fetch-websocket"
+        "ajax-fetch-websocket",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs/fetch"
@@ -922,7 +938,8 @@
       "name": "generate",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -943,7 +960,8 @@
       "name": "iif",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -964,7 +982,8 @@
       "name": "interval",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -986,7 +1005,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1011,7 +1031,8 @@
       "name": "never",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1032,7 +1053,8 @@
       "name": "of",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1054,7 +1076,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "error-handling-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1079,7 +1102,8 @@
       "name": "pairs",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1101,7 +1125,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1127,7 +1152,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1152,7 +1178,8 @@
       "name": "range",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1173,7 +1200,8 @@
       "name": "scheduled",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1194,7 +1222,8 @@
       "name": "throwError",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1215,7 +1244,8 @@
       "name": "timer",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1236,7 +1266,8 @@
       "name": "using",
       "type": "CreationFunction",
       "categories": [
-        "observable-creation"
+        "observable-creation",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs"
@@ -1258,7 +1289,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "ajax-fetch-websocket"
+        "ajax-fetch-websocket",
+        "creation-operator"
       ],
       "exportSites": [
         "rxjs/webSocket"
@@ -1280,7 +1312,8 @@
       "type": "CreationFunction",
       "categories": [
         "observable-creation",
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-creation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1862,7 +1895,8 @@
       "name": "audit",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1884,7 +1918,8 @@
       "name": "auditTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1906,7 +1941,8 @@
       "name": "buffer",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1928,7 +1964,8 @@
       "name": "bufferCount",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1950,7 +1987,8 @@
       "name": "bufferTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1972,7 +2010,8 @@
       "name": "bufferToggle",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -1994,7 +2033,8 @@
       "name": "bufferWhen",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2016,7 +2056,8 @@
       "name": "catchError",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "error-handling-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2039,7 +2080,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2062,7 +2104,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2084,7 +2127,8 @@
       "name": "combineLatestWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2107,7 +2151,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2130,7 +2175,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2152,7 +2198,8 @@
       "name": "concatMapTo",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2174,7 +2221,8 @@
       "name": "concatWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2196,7 +2244,8 @@
       "name": "connect",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2218,7 +2267,8 @@
       "name": "count",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "mathematical-aggregate-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2240,7 +2290,8 @@
       "name": "debounce",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2262,7 +2313,8 @@
       "name": "debounceTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2284,7 +2336,8 @@
       "name": "defaultIfEmpty",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2306,7 +2359,8 @@
       "name": "delay",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2328,7 +2382,8 @@
       "name": "delayWhen",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2350,7 +2405,8 @@
       "name": "dematerialize",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2372,7 +2428,8 @@
       "name": "distinct",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2394,7 +2451,8 @@
       "name": "distinctUntilChanged",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2416,7 +2474,8 @@
       "name": "distinctUntilKeyChanged",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2438,7 +2497,8 @@
       "name": "elementAt",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2460,7 +2520,8 @@
       "name": "endWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2482,7 +2543,8 @@
       "name": "every",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2504,7 +2566,8 @@
       "name": "exhaust",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2527,7 +2590,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2550,7 +2614,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2573,7 +2638,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2595,7 +2661,8 @@
       "name": "filter",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2617,7 +2684,8 @@
       "name": "finalize",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2639,7 +2707,8 @@
       "name": "find",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2661,7 +2730,8 @@
       "name": "findIndex",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2683,7 +2753,8 @@
       "name": "first",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2706,7 +2777,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2728,7 +2800,8 @@
       "name": "groupBy",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2750,7 +2823,8 @@
       "name": "ignoreElements",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2772,7 +2846,8 @@
       "name": "isEmpty",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2794,7 +2869,8 @@
       "name": "last",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2816,7 +2892,8 @@
       "name": "map",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2838,7 +2915,8 @@
       "name": "mapTo",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2860,7 +2938,8 @@
       "name": "materialize",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2882,7 +2961,8 @@
       "name": "max",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "mathematical-aggregate-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2905,7 +2985,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2928,7 +3009,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2950,7 +3032,8 @@
       "name": "mergeMapTo",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2973,7 +3056,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -2995,7 +3079,8 @@
       "name": "mergeWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3017,7 +3102,8 @@
       "name": "min",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "mathematical-aggregate-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3039,7 +3125,8 @@
       "name": "multicast",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3061,7 +3148,8 @@
       "name": "observeOn",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3083,7 +3171,8 @@
       "name": "onErrorResumeNextWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "error-handling-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3105,7 +3194,8 @@
       "name": "pairwise",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3127,7 +3217,8 @@
       "name": "pluck",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3149,7 +3240,8 @@
       "name": "publish",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3171,7 +3263,8 @@
       "name": "publishBehavior",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3193,7 +3286,8 @@
       "name": "publishLast",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3215,7 +3309,8 @@
       "name": "publishReplay",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3237,7 +3332,8 @@
       "name": "raceWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3259,7 +3355,8 @@
       "name": "reduce",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "mathematical-aggregate-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3281,7 +3378,8 @@
       "name": "refCount",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3303,7 +3401,8 @@
       "name": "repeat",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3325,7 +3424,8 @@
       "name": "repeatWhen",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3347,7 +3447,8 @@
       "name": "retry",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "error-handling-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3369,7 +3470,8 @@
       "name": "retryWhen",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "error-handling-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3391,7 +3493,8 @@
       "name": "sample",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3413,7 +3516,8 @@
       "name": "sampleTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3435,7 +3539,8 @@
       "name": "scan",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3457,7 +3562,8 @@
       "name": "sequenceEqual",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3479,7 +3585,8 @@
       "name": "share",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3501,7 +3608,8 @@
       "name": "shareReplay",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "multicasting-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3523,7 +3631,8 @@
       "name": "single",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3545,7 +3654,8 @@
       "name": "skip",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3567,7 +3677,8 @@
       "name": "skipLast",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3589,7 +3700,8 @@
       "name": "skipUntil",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3611,7 +3723,8 @@
       "name": "skipWhile",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3633,7 +3746,8 @@
       "name": "startWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3655,7 +3769,8 @@
       "name": "subscribeOn",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3678,7 +3793,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3701,7 +3817,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3723,7 +3840,8 @@
       "name": "switchMapTo",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3746,7 +3864,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3768,7 +3887,8 @@
       "name": "take",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3790,7 +3910,8 @@
       "name": "takeLast",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3812,7 +3933,8 @@
       "name": "takeUntil",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3834,7 +3956,8 @@
       "name": "takeWhile",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3856,7 +3979,8 @@
       "name": "tap",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3878,7 +4002,8 @@
       "name": "throttle",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3900,7 +4025,8 @@
       "name": "throttleTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "filtering-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3922,7 +4048,8 @@
       "name": "throwIfEmpty",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "conditional-boolean-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3944,7 +4071,8 @@
       "name": "timeInterval",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3966,7 +4094,8 @@
       "name": "timeout",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -3988,7 +4117,8 @@
       "name": "timeoutWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4010,7 +4140,8 @@
       "name": "timestamp",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4032,7 +4163,8 @@
       "name": "toArray",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "utility-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4054,7 +4186,8 @@
       "name": "window",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4076,7 +4209,8 @@
       "name": "windowCount",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4098,7 +4232,8 @@
       "name": "windowTime",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4120,7 +4255,8 @@
       "name": "windowToggle",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4142,7 +4278,8 @@
       "name": "windowWhen",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "transformation-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4164,7 +4301,8 @@
       "name": "withLatestFrom",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4187,7 +4325,8 @@
       "type": "Operator",
       "categories": [
         "pipeable-operator",
-        "higher-order-operator"
+        "higher-order-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -4209,7 +4348,8 @@
       "name": "zipWith",
       "type": "Operator",
       "categories": [
-        "pipeable-operator"
+        "pipeable-operator",
+        "join-operator"
       ],
       "exportSites": [
         "rxjs",
@@ -5881,6 +6021,176 @@
       },
       "properties": {
         "iri": "https://rxjs-ontology/util/observable"
+      }
+    },
+    {
+      "id": "cat:creation-operator",
+      "name": "creation-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Creation operators create a new Observable from a source such as an event, promise, value, or timer.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/creation-operator"
+      }
+    },
+    {
+      "id": "cat:join-creation-operator",
+      "name": "join-creation-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Join creation operators are creation operators that combine multiple source Observables into one.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/join-creation-operator"
+      }
+    },
+    {
+      "id": "cat:transformation-operator",
+      "name": "transformation-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Transformation operators transform the values emitted by an Observable.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/transformation-operator"
+      }
+    },
+    {
+      "id": "cat:filtering-operator",
+      "name": "filtering-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Filtering operators select which emitted values pass through, based on value, index, or time.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/filtering-operator"
+      }
+    },
+    {
+      "id": "cat:join-operator",
+      "name": "join-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Join operators combine an Observable with other Observables it receives as input.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/join-operator"
+      }
+    },
+    {
+      "id": "cat:multicasting-operator",
+      "name": "multicasting-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Multicasting operators share a single subscription to the source among multiple subscribers.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/multicasting-operator"
+      }
+    },
+    {
+      "id": "cat:error-handling-operator",
+      "name": "error-handling-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Error handling operators recover from or react to errors in the source Observable.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/error-handling-operator"
+      }
+    },
+    {
+      "id": "cat:utility-operator",
+      "name": "utility-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Utility operators support debugging, scheduling, materialization, and other stream utilities.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/utility-operator"
+      }
+    },
+    {
+      "id": "cat:conditional-boolean-operator",
+      "name": "conditional-boolean-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Conditional and boolean operators evaluate a condition across the emitted values.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/conditional-boolean-operator"
+      }
+    },
+    {
+      "id": "cat:mathematical-aggregate-operator",
+      "name": "mathematical-aggregate-operator",
+      "type": "Category",
+      "categories": [],
+      "exportSites": [],
+      "roles": [],
+      "description": "Mathematical and aggregate operators reduce all emitted values to a single aggregate value.",
+      "aliases": [],
+      "sourceRef": {
+        "section": "rxjs.dev operator categories",
+        "line": 0
+      },
+      "properties": {
+        "iri": "https://rxjs-ontology/cat/mathematical-aggregate-operator"
       }
     }
   ],
@@ -12814,6 +13124,1266 @@
       "weight": 1,
       "provenance": "parsed",
       "description": "zipWith belongs to the pipeable-operator category."
+    },
+    {
+      "id": "edge:EMPTY--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:EMPTY",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "EMPTY belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:NEVER--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:NEVER",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "NEVER belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:ajax--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:ajax",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "ajax belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:animationFrames--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:animationFrames",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "animationFrames belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:bindCallback--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:bindCallback",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bindCallback belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:bindNodeCallback--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:bindNodeCallback",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bindNodeCallback belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:combineLatest--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:combineLatest",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "combineLatest belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:concat--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:concat",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "concat belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:connectable--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "create:connectable",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "connectable belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:defer--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:defer",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "defer belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:empty--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:empty",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "empty belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:forkJoin--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:forkJoin",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "forkJoin belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:from--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:from",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "from belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:fromEvent--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:fromEvent",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "fromEvent belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:fromEventPattern--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:fromEventPattern",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "fromEventPattern belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:fromFetch--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:fromFetch",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "fromFetch belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:generate--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:generate",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "generate belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:iif--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:iif",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "iif belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:interval--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:interval",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "interval belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:merge--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:merge",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "merge belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:never--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:never",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "never belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:of--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:of",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "of belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:onErrorResumeNext--hasCategory--error-handling-operator",
+      "type": "hasCategory",
+      "source": "create:onErrorResumeNext",
+      "target": "cat:error-handling-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "onErrorResumeNext belongs to the error-handling-operator category."
+    },
+    {
+      "id": "edge:pairs--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:pairs",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "pairs belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:partition--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:partition",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "partition belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:race--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:race",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "race belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:range--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:range",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "range belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:scheduled--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:scheduled",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "scheduled belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:throwError--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:throwError",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "throwError belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:timer--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:timer",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "timer belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:using--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:using",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "using belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:webSocket--hasCategory--creation-operator",
+      "type": "hasCategory",
+      "source": "create:webSocket",
+      "target": "cat:creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "webSocket belongs to the creation-operator category."
+    },
+    {
+      "id": "edge:zip--hasCategory--join-creation-operator",
+      "type": "hasCategory",
+      "source": "create:zip",
+      "target": "cat:join-creation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "zip belongs to the join-creation-operator category."
+    },
+    {
+      "id": "edge:audit--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:audit",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "audit belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:auditTime--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:auditTime",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "auditTime belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:buffer--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:buffer",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "buffer belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:bufferCount--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:bufferCount",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bufferCount belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:bufferTime--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:bufferTime",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bufferTime belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:bufferToggle--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:bufferToggle",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bufferToggle belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:bufferWhen--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:bufferWhen",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "bufferWhen belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:catchError--hasCategory--error-handling-operator",
+      "type": "hasCategory",
+      "source": "op:catchError",
+      "target": "cat:error-handling-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "catchError belongs to the error-handling-operator category."
+    },
+    {
+      "id": "edge:combineAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:combineAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "combineAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:combineLatestAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:combineLatestAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "combineLatestAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:combineLatestWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:combineLatestWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "combineLatestWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:concatAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:concatAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "concatAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:concatMap--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:concatMap",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "concatMap belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:concatMapTo--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:concatMapTo",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "concatMapTo belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:concatWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:concatWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "concatWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:connect--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:connect",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "connect belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:count--hasCategory--mathematical-aggregate-operator",
+      "type": "hasCategory",
+      "source": "op:count",
+      "target": "cat:mathematical-aggregate-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "count belongs to the mathematical-aggregate-operator category."
+    },
+    {
+      "id": "edge:debounce--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:debounce",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "debounce belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:debounceTime--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:debounceTime",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "debounceTime belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:defaultIfEmpty--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:defaultIfEmpty",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "defaultIfEmpty belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:delay--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:delay",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "delay belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:delayWhen--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:delayWhen",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "delayWhen belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:dematerialize--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:dematerialize",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "dematerialize belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:distinct--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:distinct",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "distinct belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:distinctUntilChanged--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:distinctUntilChanged",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "distinctUntilChanged belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:distinctUntilKeyChanged--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:distinctUntilKeyChanged",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "distinctUntilKeyChanged belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:elementAt--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:elementAt",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "elementAt belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:endWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:endWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "endWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:every--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:every",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "every belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:exhaust--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:exhaust",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "exhaust belongs to the join-operator category."
+    },
+    {
+      "id": "edge:exhaustAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:exhaustAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "exhaustAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:exhaustMap--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:exhaustMap",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "exhaustMap belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:expand--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:expand",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "expand belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:filter--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:filter",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "filter belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:finalize--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:finalize",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "finalize belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:find--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:find",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "find belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:findIndex--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:findIndex",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "findIndex belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:first--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:first",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "first belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:flatMap--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:flatMap",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "flatMap belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:groupBy--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:groupBy",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "groupBy belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:ignoreElements--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:ignoreElements",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "ignoreElements belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:isEmpty--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:isEmpty",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "isEmpty belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:last--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:last",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "last belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:map--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:map",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "map belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:mapTo--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:mapTo",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mapTo belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:materialize--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:materialize",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "materialize belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:max--hasCategory--mathematical-aggregate-operator",
+      "type": "hasCategory",
+      "source": "op:max",
+      "target": "cat:mathematical-aggregate-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "max belongs to the mathematical-aggregate-operator category."
+    },
+    {
+      "id": "edge:mergeAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:mergeAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mergeAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:mergeMap--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:mergeMap",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mergeMap belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:mergeMapTo--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:mergeMapTo",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mergeMapTo belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:mergeScan--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:mergeScan",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mergeScan belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:mergeWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:mergeWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "mergeWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:min--hasCategory--mathematical-aggregate-operator",
+      "type": "hasCategory",
+      "source": "op:min",
+      "target": "cat:mathematical-aggregate-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "min belongs to the mathematical-aggregate-operator category."
+    },
+    {
+      "id": "edge:multicast--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:multicast",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "multicast belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:observeOn--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:observeOn",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "observeOn belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:onErrorResumeNextWith--hasCategory--error-handling-operator",
+      "type": "hasCategory",
+      "source": "op:onErrorResumeNextWith",
+      "target": "cat:error-handling-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "onErrorResumeNextWith belongs to the error-handling-operator category."
+    },
+    {
+      "id": "edge:pairwise--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:pairwise",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "pairwise belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:pluck--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:pluck",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "pluck belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:publish--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:publish",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "publish belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:publishBehavior--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:publishBehavior",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "publishBehavior belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:publishLast--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:publishLast",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "publishLast belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:publishReplay--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:publishReplay",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "publishReplay belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:raceWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:raceWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "raceWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:reduce--hasCategory--mathematical-aggregate-operator",
+      "type": "hasCategory",
+      "source": "op:reduce",
+      "target": "cat:mathematical-aggregate-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "reduce belongs to the mathematical-aggregate-operator category."
+    },
+    {
+      "id": "edge:refCount--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:refCount",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "refCount belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:repeat--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:repeat",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "repeat belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:repeatWhen--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:repeatWhen",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "repeatWhen belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:retry--hasCategory--error-handling-operator",
+      "type": "hasCategory",
+      "source": "op:retry",
+      "target": "cat:error-handling-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "retry belongs to the error-handling-operator category."
+    },
+    {
+      "id": "edge:retryWhen--hasCategory--error-handling-operator",
+      "type": "hasCategory",
+      "source": "op:retryWhen",
+      "target": "cat:error-handling-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "retryWhen belongs to the error-handling-operator category."
+    },
+    {
+      "id": "edge:sample--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:sample",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "sample belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:sampleTime--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:sampleTime",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "sampleTime belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:scan--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:scan",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "scan belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:sequenceEqual--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:sequenceEqual",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "sequenceEqual belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:share--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:share",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "share belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:shareReplay--hasCategory--multicasting-operator",
+      "type": "hasCategory",
+      "source": "op:shareReplay",
+      "target": "cat:multicasting-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "shareReplay belongs to the multicasting-operator category."
+    },
+    {
+      "id": "edge:single--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:single",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "single belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:skip--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:skip",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "skip belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:skipLast--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:skipLast",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "skipLast belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:skipUntil--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:skipUntil",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "skipUntil belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:skipWhile--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:skipWhile",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "skipWhile belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:startWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:startWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "startWith belongs to the join-operator category."
+    },
+    {
+      "id": "edge:subscribeOn--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:subscribeOn",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "subscribeOn belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:switchAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:switchAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "switchAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:switchMap--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:switchMap",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "switchMap belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:switchMapTo--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:switchMapTo",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "switchMapTo belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:switchScan--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:switchScan",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "switchScan belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:take--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:take",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "take belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:takeLast--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:takeLast",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "takeLast belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:takeUntil--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:takeUntil",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "takeUntil belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:takeWhile--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:takeWhile",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "takeWhile belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:tap--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:tap",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "tap belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:throttle--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:throttle",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "throttle belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:throttleTime--hasCategory--filtering-operator",
+      "type": "hasCategory",
+      "source": "op:throttleTime",
+      "target": "cat:filtering-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "throttleTime belongs to the filtering-operator category."
+    },
+    {
+      "id": "edge:throwIfEmpty--hasCategory--conditional-boolean-operator",
+      "type": "hasCategory",
+      "source": "op:throwIfEmpty",
+      "target": "cat:conditional-boolean-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "throwIfEmpty belongs to the conditional-boolean-operator category."
+    },
+    {
+      "id": "edge:timeInterval--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:timeInterval",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "timeInterval belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:timeout--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:timeout",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "timeout belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:timeoutWith--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:timeoutWith",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "timeoutWith belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:timestamp--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:timestamp",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "timestamp belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:toArray--hasCategory--utility-operator",
+      "type": "hasCategory",
+      "source": "op:toArray",
+      "target": "cat:utility-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "toArray belongs to the utility-operator category."
+    },
+    {
+      "id": "edge:window--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:window",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "window belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:windowCount--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:windowCount",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "windowCount belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:windowTime--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:windowTime",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "windowTime belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:windowToggle--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:windowToggle",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "windowToggle belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:windowWhen--hasCategory--transformation-operator",
+      "type": "hasCategory",
+      "source": "op:windowWhen",
+      "target": "cat:transformation-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "windowWhen belongs to the transformation-operator category."
+    },
+    {
+      "id": "edge:withLatestFrom--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:withLatestFrom",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "withLatestFrom belongs to the join-operator category."
+    },
+    {
+      "id": "edge:zipAll--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:zipAll",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "zipAll belongs to the join-operator category."
+    },
+    {
+      "id": "edge:zipWith--hasCategory--join-operator",
+      "type": "hasCategory",
+      "source": "op:zipWith",
+      "target": "cat:join-operator",
+      "weight": 1,
+      "provenance": "rxjs.dev-categories",
+      "description": "zipWith belongs to the join-operator category."
     }
   ]
 }

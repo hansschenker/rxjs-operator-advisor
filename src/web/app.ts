@@ -15,29 +15,33 @@ import { renderMarbleDemo, renderFlatteningComparison } from "./marble-view.ts";
 
 const graph = graphData as unknown as OntologyGraph;
 
-/** Display order + labels for the advisor's task categories. */
+/** Display order + labels for the task categories (rxjs.dev + a flattening group). */
 const CATEGORY_ORDER: OperatorCategory[] = [
   "flattening",
-  "rate-limiting",
   "transformation",
   "filtering",
-  "combination",
-  "error-handling",
-  "multicasting",
-  "utility",
+  "join",
+  "join-creation",
   "creation",
+  "multicasting",
+  "error-handling",
+  "utility",
+  "conditional-boolean",
+  "mathematical-aggregate",
 ];
 
 const CATEGORY_LABEL: Record<OperatorCategory, string> = {
   flattening: "Flattening (higher-order)",
-  "rate-limiting": "Rate limiting & timing",
   transformation: "Transformation",
   filtering: "Filtering",
-  combination: "Combination",
-  "error-handling": "Error handling",
-  multicasting: "Multicasting",
-  utility: "Utility",
+  join: "Join",
+  "join-creation": "Join creation",
   creation: "Creation",
+  multicasting: "Multicasting",
+  "error-handling": "Error handling",
+  utility: "Utility",
+  "conditional-boolean": "Conditional & boolean",
+  "mathematical-aggregate": "Mathematical & aggregate",
 };
 
 const EXAMPLES = [
@@ -178,40 +182,21 @@ function renderGuide(): HTMLElement {
   ]);
 }
 
-/** Browse-by-category reference over the curated operators, with a name filter. */
+/** Browse-by-category reference over every operator, with a name filter. */
 function renderBrowse(candidates: OperatorCandidate[]): HTMLElement {
-  const curated = candidates.filter((c) => c.signals.length > 0);
-  const others = candidates.filter((c) => c.signals.length === 0);
-
-  const grids = new Map<OperatorCategory, HTMLElement>();
   const sections: HTMLElement[] = [];
   for (const category of CATEGORY_ORDER) {
-    const inCategory = curated.filter((c) => c.category === category);
+    const inCategory = candidates
+      .filter((c) => c.category === category)
+      .sort((a, b) => a.operator.localeCompare(b.operator));
     if (inCategory.length === 0) continue;
-    const grid = h("div", { class: "grid" }, inCategory.map((c) => operatorCard(c)));
-    grids.set(category, grid);
     sections.push(
       h("section", { class: "cat", "data-cat": category }, [
-        h("h3", { class: "cat__title" }, CATEGORY_LABEL[category]),
-        grid,
+        h("h3", { class: "cat__title" }, `${CATEGORY_LABEL[category]} (${inCategory.length})`),
+        h("div", { class: "grid" }, inCategory.map((c) => operatorCard(c))),
       ]),
     );
   }
-
-  const otherChips = others
-    .slice()
-    .sort((a, b) => a.operator.localeCompare(b.operator))
-    .map((c) =>
-      h(
-        "a",
-        { class: "op-chip", href: `https://rxjs.dev/api?query=${encodeURIComponent(c.operator)}`, target: "_blank", rel: "noopener" },
-        c.operator,
-      ),
-    );
-  const otherSection = h("section", { class: "cat" }, [
-    h("h3", { class: "cat__title" }, "Other RxJS operators"),
-    h("div", { class: "chips" }, otherChips),
-  ]);
 
   const filter = h("input", {
     class: "filter",
@@ -232,21 +217,13 @@ function renderBrowse(candidates: OperatorCandidate[]): HTMLElement {
       });
       section.style.display = visible === 0 ? "none" : "";
     }
-    let otherVisible = 0;
-    otherChips.forEach((chip) => {
-      const show = term === "" || (chip.textContent ?? "").toLowerCase().includes(term);
-      chip.style.display = show ? "" : "none";
-      if (show) otherVisible += 1;
-    });
-    otherSection.style.display = otherVisible === 0 ? "none" : "";
   });
 
   return h("section", { class: "panel", id: "browse" }, [
     h("h2", null, "Browse operators by task"),
-    h("p", { class: "panel__lead" }, `${curated.length} operators are categorised by what you're trying to do. The remaining ${others.length} are listed below and are still searchable above.`),
+    h("p", { class: "panel__lead" }, `All ${candidates.length} operators, grouped by their rxjs.dev category (plus a dedicated flattening group). Filter by name, or describe a behaviour above.`),
     filter,
     ...sections,
-    otherSection,
   ]);
 }
 

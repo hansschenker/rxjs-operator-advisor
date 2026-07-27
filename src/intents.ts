@@ -1,5 +1,3 @@
-import type { OperatorCategory } from "./types.js";
-
 /**
  * Behavior signals per flattening policy. Keys are the ontology's policy names
  * (allowConcurrent / keepLatest / queueWhileBusy / ignoreWhileBusy), so this map
@@ -96,8 +94,8 @@ export const POLICY_SIGNALS: Record<string, string[]> = {
 /**
  * A curated behavior→operator mapping: the advisor's own knowledge, layered on
  * top of the ontology's facts. Each entry names a real operator/creation-function
- * node in the graph, assigns it a task `category`, and lists the plain-English
- * `signals` a user might use to describe that behavior. The 4 flattening operators
+ * node in the graph and lists the plain-English `signals` a user might use to
+ * describe that behavior. The 4 flattening operators
  * reuse `POLICY_SIGNALS` so the two advisors stay in lock-step; the rest are
  * hand-authored. Operators absent from this list still appear as candidates (from
  * the graph) and stay reachable via description-keyword matching.
@@ -105,21 +103,19 @@ export const POLICY_SIGNALS: Record<string, string[]> = {
 export interface OperatorIntent {
   /** must match an ontology node `name` */
   operator: string;
-  category: OperatorCategory;
   signals: string[];
 }
 
 export const OPERATOR_INTENTS: OperatorIntent[] = [
   // ── flattening (higher-order) — signals shared with the flattening guide ──
-  { operator: "mergeMap", category: "flattening", signals: POLICY_SIGNALS.allowConcurrent! },
-  { operator: "switchMap", category: "flattening", signals: POLICY_SIGNALS.keepLatest! },
-  { operator: "concatMap", category: "flattening", signals: POLICY_SIGNALS.queueWhileBusy! },
-  { operator: "exhaustMap", category: "flattening", signals: POLICY_SIGNALS.ignoreWhileBusy! },
+  { operator: "mergeMap", signals: POLICY_SIGNALS.allowConcurrent! },
+  { operator: "switchMap", signals: POLICY_SIGNALS.keepLatest! },
+  { operator: "concatMap", signals: POLICY_SIGNALS.queueWhileBusy! },
+  { operator: "exhaustMap", signals: POLICY_SIGNALS.ignoreWhileBusy! },
 
   // ── rate-limiting / timing ──
   {
     operator: "debounceTime",
-    category: "rate-limiting",
     signals: [
       "wait until",
       "stops typing",
@@ -138,7 +134,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "throttleTime",
-    category: "rate-limiting",
     signals: [
       "rate limit",
       "rate-limit",
@@ -154,7 +149,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "auditTime",
-    category: "rate-limiting",
     signals: [
       "emit the latest every",
       "last value in each window",
@@ -165,7 +159,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "sampleTime",
-    category: "rate-limiting",
     signals: [
       "sample",
       "poll the latest",
@@ -177,14 +170,12 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "delay",
-    category: "utility",
     signals: ["delay", "wait before", "postpone", "hold for", "shift in time", "after a delay"],
   },
 
   // ── filtering ──
   {
     operator: "filter",
-    category: "filtering",
     signals: [
       "only values that",
       "only emit when",
@@ -200,7 +191,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "distinctUntilChanged",
-    category: "filtering",
     signals: [
       "only when it changes",
       "only when the value changes",
@@ -214,7 +204,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "distinct",
-    category: "filtering",
     signals: [
       "remove duplicate",
       "remove duplicates",
@@ -230,12 +219,10 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "take",
-    category: "filtering",
     signals: ["first n", "only the first", "take the first", "then complete", "limit to", "first few"],
   },
   {
     operator: "takeUntil",
-    category: "filtering",
     signals: [
       "until another",
       "until a notifier",
@@ -247,27 +234,22 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "takeWhile",
-    category: "filtering",
     signals: ["while a condition", "as long as", "until it becomes false", "keep taking while", "take while"],
   },
   {
     operator: "first",
-    category: "filtering",
     signals: ["the first value", "first that matches", "first emission", "just the first"],
   },
   {
     operator: "last",
-    category: "filtering",
     signals: ["the last value", "final value", "last emission", "last that matches"],
   },
   {
     operator: "skip",
-    category: "filtering",
     signals: ["skip the first", "ignore the first", "drop the first", "skip n"],
   },
   {
     operator: "ignoreElements",
-    category: "filtering",
     signals: [
       "ignore all values",
       "only care about completion",
@@ -278,14 +260,12 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "elementAt",
-    category: "filtering",
     signals: ["value at index", "nth value", "the n-th", "specific index"],
   },
 
   // ── transformation ──
   {
     operator: "map",
-    category: "transformation",
     signals: [
       "transform each",
       "map each",
@@ -298,7 +278,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "scan",
-    category: "transformation",
     signals: [
       "accumulate",
       "running total",
@@ -312,7 +291,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "reduce",
-    category: "transformation",
     signals: [
       "final total",
       "aggregate at the end",
@@ -323,34 +301,28 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "pairwise",
-    category: "transformation",
     signals: ["previous and current", "consecutive pairs", "compare with the previous", "current and last", "in pairs"],
   },
   {
     operator: "bufferTime",
-    category: "transformation",
     signals: ["batch over time", "collect for a period", "buffer for", "group values every", "batch every"],
   },
   {
     operator: "bufferCount",
-    category: "transformation",
     signals: ["batch of", "group into arrays of", "collect n values", "chunks of", "every n values as an array"],
   },
   {
     operator: "toArray",
-    category: "transformation",
     signals: ["collect all into an array", "all values as an array", "gather into a list", "array when complete"],
   },
   {
     operator: "groupBy",
-    category: "transformation",
     signals: ["group by", "partition by key", "split by key", "group values by"],
   },
 
   // ── combination ──
   {
     operator: "combineLatestWith",
-    category: "combination",
     signals: [
       "latest of each",
       "whenever any changes",
@@ -362,7 +334,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "withLatestFrom",
-    category: "combination",
     signals: [
       "latest value of another",
       "sample another stream",
@@ -373,32 +344,26 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "zipWith",
-    category: "combination",
     signals: ["pair up in lockstep", "one from each", "zip together", "in lockstep", "zip"],
   },
   {
     operator: "concatWith",
-    category: "combination",
     signals: ["one after another", "append another stream", "then the next stream", "after the first completes"],
   },
   {
     operator: "mergeWith",
-    category: "combination",
     signals: ["merge streams", "interleave streams", "combine emissions from", "merge into one"],
   },
   {
     operator: "raceWith",
-    category: "combination",
     signals: ["first to emit wins", "whichever emits first", "race", "fastest source"],
   },
   {
     operator: "startWith",
-    category: "combination",
     signals: ["initial value", "seed value", "emit first before", "start with", "begin with", "prepend"],
   },
   {
     operator: "forkJoin",
-    category: "combination",
     signals: [
       "wait for all",
       "wait for all to complete",
@@ -423,7 +388,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   // ── error handling ──
   {
     operator: "catchError",
-    category: "error-handling",
     signals: [
       "handle the error",
       "on error",
@@ -436,7 +400,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "retry",
-    category: "error-handling",
     signals: [
       "retry",
       "try again",
@@ -449,19 +412,16 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "timeout",
-    category: "error-handling",
     signals: ["timeout", "give up after", "too slow", "if it takes too long", "error if no value within", "time limit"],
   },
   {
     operator: "throwIfEmpty",
-    category: "error-handling",
     signals: ["error if empty", "fail if nothing", "throw when no values", "require at least one"],
   },
 
   // ── multicasting ──
   {
     operator: "share",
-    category: "multicasting",
     signals: [
       "share the subscription",
       "multicast",
@@ -473,7 +433,6 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   },
   {
     operator: "shareReplay",
-    category: "multicasting",
     signals: [
       "cache the last",
       "replay to late subscribers",
@@ -487,12 +446,10 @@ export const OPERATOR_INTENTS: OperatorIntent[] = [
   // ── utility ──
   {
     operator: "tap",
-    category: "utility",
     signals: ["side effect", "for debugging", "log each value", "without changing", "peek at values", "tap into"],
   },
   {
     operator: "finalize",
-    category: "utility",
     signals: ["cleanup", "on complete or error", "teardown", "run when it finishes", "always run at the end"],
   },
 ];
